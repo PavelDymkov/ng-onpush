@@ -1,6 +1,6 @@
 {
     "name": "ng-onpush",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "description": "Easy ChangeDetectionStrategy.OnPush usage",
     "keywords": [
         "angular",
@@ -16,11 +16,8 @@
         "url": "https://github.com/PavelDymkov/ng-onpush.git"
     },
     "license": "MIT",
-    "scripts": {
-        "prepublishOnly": "cp ../README.md ../LICENSE ."
-    },
     "peerDependencies": {
-        "@angular/core": "^12.2.0"
+        "@angular/core": "*"
     },
     "dependencies": {
         "tslib": "^2.3.0"
