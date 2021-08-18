@@ -1,0 +1,31 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "src",
+    "projects": {
+        "ng-onpush": {
+            "projectType": "library",
+            "root": "src/ng-onpush",
+            "sourceRoot": "src/ng-onpush/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "src/ng-onpush/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "src/ng-onpush/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "src/ng-onpush/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                }
+            }
+        }
+    },
+    "defaultProject": "ng-onpush"
+}
