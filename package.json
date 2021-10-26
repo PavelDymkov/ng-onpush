@@ -4,6 +4,7 @@
     "scripts": {
         "build": "ng build && npm run copy-files",
         "copy-files": "cp README.md LICENSE package",
+        "prepublishOnly": "exit 1",
         "start": "ng serve",
         "watch": "ng build --watch --configuration development"
     },
