@@ -1,6 +1,6 @@
 {
     "name": "ng-onpush",
-    "version": "0.7.5",
+    "version": "0.7.7",
     "description": "Easy ChangeDetectionStrategy.OnPush usage",
     "keywords": [
         "angular",

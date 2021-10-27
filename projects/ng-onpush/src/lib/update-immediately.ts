@@ -1,8 +1,17 @@
 import { shared } from "./shared";
 
 export function UpdateImmediately(): PropertyDecorator {
-    return function (): TypedPropertyDescriptor<any> {
+    return function (target: any): TypedPropertyDescriptor<any> {
         const key = Symbol();
+
+        const afterViewInitOrigin = target.ngAfterViewInit as Function;
+        let ready = false;
+
+        target.ngAfterViewInit = function () {
+            ready = true;
+
+            if (afterViewInitOrigin) afterViewInitOrigin.apply(this, arguments);
+        };
 
         return {
             get(this: any) {
@@ -12,7 +21,7 @@ export function UpdateImmediately(): PropertyDecorator {
             set(this: any, nextValue: any) {
                 this[key] = nextValue;
 
-                shared.changeDetectorRef?.detectChanges();
+                if (ready) shared.changeDetectorRef?.detectChanges();
             },
         };
     };
