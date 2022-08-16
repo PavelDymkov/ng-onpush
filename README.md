@@ -1,5 +1,9 @@
 # NgOnpush
 
+![test: passed](https://raw.githubusercontent.com/PavelDymkov/ng-onpush/master/badges/test.svg)
+![tests with angular: 14.1.2](https://raw.githubusercontent.com/PavelDymkov/ng-onpush/master/badges/ng-version.svg)
+![license: ](https://raw.githubusercontent.com/PavelDymkov/ng-onpush/master/badges/license.svg)
+
 ## Usage
 
 Set the OnPush strategy to the root component.

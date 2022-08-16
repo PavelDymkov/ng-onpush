@@ -15,8 +15,6 @@ const project = require("./package.json").name;
 npmPackagr({
     sourceDirectory: getRootDirectory(project),
     pipeline: [
-        git("commit", project),
-
         npx(`ng build ${project}`),
 
         test(),
@@ -28,18 +26,18 @@ npmPackagr({
         badge(BadgeType.License),
 
         ({ exec, packageDirectory, sourceDirectory }) => {
-            exec("npm version patch", { cd: sourceDirectory });
-            exec("npm version patch", { cd: packageDirectory });
+            exec("npm version prerelease", { cd: sourceDirectory });
+            exec("npm version prerelease", { cd: packageDirectory });
         },
 
         assets("LICENSE", "README.md"),
 
-        // git("commit", project),
-        // git("push"),
+        git("commit", project),
+        git("push"),
 
-        // publish({
-        //     login: { account: "paveldymkov", email: "dymkov86@gmail.com" },
-        // }),
+        publish({
+            login: { account: "paveldymkov", email: "dymkov86@gmail.com" },
+        }),
     ],
 });
 
