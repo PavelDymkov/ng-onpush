@@ -1,25 +1,27 @@
 {
     "name": "ng-onpush",
-    "version": "0.7.7",
+    "version": "1.0.0-beta.0",
     "description": "Easy ChangeDetectionStrategy.OnPush usage",
-    "keywords": [
-        "angular",
-        "ChangeDetectionStrategy",
-        "OnPush"
-    ],
     "author": {
         "name": "Pavel Dymkov",
         "email": "dymkov86@gmail.com"
     },
+    "license": "MIT",
+    "keywords": [
+        "angular",
+        "ChangeDetectionStrategy",
+        "OnPush",
+        "push",
+        "strategy"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/PavelDymkov/ng-onpush.git"
     },
-    "license": "MIT",
     "peerDependencies": {
         "@angular/core": "*"
     },
     "dependencies": {
-        "tslib": "^2.3.0"
+        "tslib": "^2.4.0"
     }
 }

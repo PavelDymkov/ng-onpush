@@ -1,17 +1,14 @@
-import { shared } from "./shared";
+import {
+    getChangeDetectorRef,
+    attachChangeDetectorRef,
+} from "./internal/change-detector-provider";
+import { createKey } from "./internal/key-by-property";
 
 export function UpdateImmediately(): PropertyDecorator {
-    return function (target: any): TypedPropertyDescriptor<any> {
-        const key = Symbol();
+    return function (target, property): TypedPropertyDescriptor<any> {
+        attachChangeDetectorRef(target);
 
-        const afterViewInitOrigin = target.ngAfterViewInit as Function;
-        let ready = false;
-
-        target.ngAfterViewInit = function () {
-            ready = true;
-
-            if (afterViewInitOrigin) afterViewInitOrigin.apply(this, arguments);
-        };
+        const key = createKey(property);
 
         return {
             get(this: any) {
@@ -21,7 +18,7 @@ export function UpdateImmediately(): PropertyDecorator {
             set(this: any, nextValue: any) {
                 this[key] = nextValue;
 
-                if (ready) shared.changeDetectorRef?.detectChanges();
+                getChangeDetectorRef(this)?.detectChanges();
             },
         };
     };
